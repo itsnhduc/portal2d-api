@@ -2,7 +2,7 @@
 
 module.exports = function(Entry) {
   Entry.addentry = function(name, score, cb) {
-    Entry.create({name: name, score: score}, function(err, entry) {
+    Entry.upsertWithWhere({name: name},{name: name, score: score}, function(err, entry) {
       if (err) throw err;
       console.log('Models created: \n', entry);
     });
